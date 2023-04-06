@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      /* This is amin navbar that includes Logo and Navigation Links */
+      nav {
+        height: 70px;
+        background-color: #00309f;
+        font-family: sans-serif;
+        font-weight: bold;
+      }
+
+      /* This Style is applied to perticular Division Of Links  */
+      .Link {
+        text-align: center;
+        height: 70px;
+        width: 200px;
+        background-color: #00309f;
+        /* border: 0.5px solid black; */
+      }
+
+      /* This style is effect To the direct Links and Text Decoration is used to remove underline of the link */
+      .Link a {
+        position: relative;
+        top: 20px;
+        text-decoration: none;
+        color: white;
+        font-size: 20px;
+      }
+
+      /* This style will effect The Sublinks That are under Services Link */
+      nav .Sublinks {
+        display: flex;
+        justify-content: right;
+        align-items: center;
+      }
+
+      /* This Style will Hide Sublinks that are under links and will see on hover Effect */
+      nav .Sublinks .Sublinks {
+        display: none;
+      }
+
+      /* This is normal hover effect When we move cursor on these links the background color will change */
+      .Sublinks .Link:hover {
+        background-color: #001678;
+      }
+/* 
+      This is main hover effect As i wrote aabove the sublinks are hidden and to see them we have to hover on 
+      Link Name 'Services' Afeter hovering on it other sublinks will be Shown And when we hover pn sublink name 'More' Other sublinks list
+      of that more link will appear on hovering on more */
+  
+      nav .Sublinks .Link:hover > .Sublinks {
+        display: block;
+        padding-top: 45px;
+      }
+
+
+      /* This is simple height, width and margin to the login button */
+      button {
+        height: 30px;
+        margin: 10px 20px;
+        width: 70px;
+        font-size: 20px;
+        cursor: pointer;
+      }
+
+      /* This is To change image size and set it to proper place */
+      .image img {
+        position: absolute;
+        left: 50px;
+        top: 5px;
+        height: 60px;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="Main-Navbar Sublinks">
+        <div class="image"><img src="Tops.webp" alt="image" /></div>
+        <div class="Link"><a href="#">Home</a></div>
+        <div class="Link"><a href="#">About</a></div>
+        <div class="Link">
+          <!-- Above Links are normal link but This services link is different when we will hover on it the below links list like webdesign, marketing, wordpress and more will be shown and again when we will hover on more other sublinks like html,css,javascript and jquery eill be shown -->
+          <!-- &#709; This code is here to show a downarrow -->
+          <a href="#">Services &#709;</a>
+          <div class="Sublinks">
+            <div class="Link"><a href="#">Web Design</a></div>
+            <div class="Link"><a href="#">Marketing</a></div>
+            <div class="Link"><a href="#">Wordpress</a></div>
+            <div class="Link">
+              <a href="#">More &#709;</a>
+              <div class="Sublinks">
+                <div class="Link"><a href="#">Html</a></div>
+                <div class="Link"><a href="#">Css</a></div>
+                <div class="Link"><a href="#">JavaScript</a></div>
+                <div class="Link"><a href="#">JQuery</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- This is Normal links like Home and about -->
+        <div class="Link"><a href="#">Blog</a></div>
+        <div class="Link"><a href="#">Contact</a></div>
+        <!-- This is normal Login Button  -->
+        <button>Log in</button>
+      </div>
+    </nav>
+  </body>
+</html>
