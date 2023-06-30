@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Restaurant Booking Form</title>
+    <style>
+      /* Styling of HTML Page starts*/
+      body {
+        background: url(restaurant.jpg) center / cover;
+        font-family: sans-serif;
+        font-size: 1.4rem;
+        text-align: center;
+      }
+      .body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      #bookingForm {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 80vh;
+        width: 60vw;
+        background-color: rgba(204, 204, 204, 0.5);
+        border-radius: 10px;
+      }
+      button,
+      input,
+      option,
+      select {
+        font-size: 1.2rem;
+        outline: none;
+        border: none;
+      }
+      input,
+      select {
+        width: 300px;
+        height: 30px;
+      }
+      .select {
+        text-align: left;
+        margin-right: 10px;
+      }
+      input:focus,
+      select:focus {
+        outline: none;
+        border: none;
+      }
+      .form-group {
+        margin-bottom: 15px;
+      }
+      label {
+        display: block;
+        margin-bottom: 5px;
+        text-align: left;
+      }
+      .btn {
+        cursor: pointer;
+        background-color: #00000086;
+        color: #ccc;
+        padding: 12px 24px;
+        border-radius: 10px;
+      }
+      .btn:hover {
+        color: black;
+        background-color: seashell;
+      }
+      /* Styling of HTML Page ends*/
+    </style>
+  </head>
+  <body>
+    <div class="body">
+      <form id="bookingForm">
+        <h2>Welcome to Khana-Khazana</h2>
+        <div class="form-group select">
+          <label for="bookingChoice">Choice of Booking</label>
+          <select id="bookingChoice" onchange="handleBookingChoice()">
+            <option value="" selected></option>
+            <option value="fullDay">Full Day Booking</option>
+            <option value="halfDay">Half Day Booking</option>
+            <option value="hourly">Hourly Booking</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="userName">User Name</label>
+          <input type="text" id="userName" required />
+        </div>
+
+        <div class="form-group">
+          <label for="mobileNumber">Mobile Number</label>
+          <input type="tel" id="mobileNumber" required />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" required />
+        </div>
+
+        <div class="form-group">
+          <label for="numberOfPersons">Number of Persons</label>
+          <input type="number" id="numberOfPersons" min="1" required />
+        </div>
+
+        <div class="form-group">
+          <label for="bookingDate">Date</label>
+          <input type="date" id="bookingDate" required />
+        </div>
+
+        <div id="slotContainer" class="form-group" style="display: none">
+          <label for="slot">Slot</label>
+          <select id="slot">
+            <option value="breakfast">Breakfast</option>
+            <option value="lunch">Lunch</option>
+            <option value="dinner">Dinner</option>
+          </select>
+        </div>
+
+        <div id="timeContainer" class="form-group" style="display: none">
+          <label for="bookingTime">Time</label>
+          <input type="time" id="bookingTime" />
+        </div>
+
+        <button type="submit" class="btn">Submit</button>
+      </form>
+    </div>
+
+    <script>
+      function handleBookingChoice() {
+        //Declaring variables by selection html input values booking choice, slot and time.
+        var bookingChoice = document.getElementById("bookingChoice").value;
+        var slotContainer = document.getElementById("slotContainer");
+        var timeContainer = document.getElementById("timeContainer");
+
+        //If we select booking of full day than slot and time containers will be hidden
+        if (bookingChoice === "fullDay") {
+          slotContainer.style.display = "none";
+          timeContainer.style.display = "none";
+          //If we select booking of half day than alot will be shown and time will be hidden
+        } else if (bookingChoice === "halfDay") {
+          slotContainer.style.display = "block";
+          timeContainer.style.display = "none";
+          //If we select booking of hourly day than slot will be hidden and time will be shown
+        } else if (bookingChoice === "hourly") {
+          slotContainer.style.display = "none";
+          timeContainer.style.display = "block";
+        }
+      }
+      //Selecting form element
+      document
+        .getElementById("bookingForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          //declaring variables to store input values of html input values
+          var userName = document.getElementById("userName").value;
+          var mobileNumber = document.getElementById("mobileNumber").value;
+          var email = document.getElementById("email").value;
+          var numberOfPersons =
+            document.getElementById("numberOfPersons").value;
+          var bookingDate = document.getElementById("bookingDate").value;
+          var slot = document.getElementById("slot").value;
+          var bookingTime = document.getElementById("bookingTime").value;
+          //Displaying All User Data in console
+          console.log("User Name:", userName);
+          console.log("Mobile Number:", mobileNumber);
+          console.log("Email:", email);
+          console.log("Number of Persons:", numberOfPersons);
+          console.log("Booking Date:", bookingDate);
+          console.log("Slot:", slot);
+          console.log("Booking Time:", bookingTime);
+
+          // Here, you can perform further actions like sending the form data to a server or displaying a confirmation message.
+        });
+    </script>
+  </body>
+</html>
